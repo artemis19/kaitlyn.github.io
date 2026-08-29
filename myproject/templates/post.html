@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<article id="postbody" data-pagefind-body>
+  <h1 class="posthead" data-pagefind-meta="title">{{ post.title }}</h1>
+  <p class="post-date" data-pagefind-meta="date">{{ post.date }}</p>
+  {% for tag in post.meta.get('tags', []) %}
+  <span class="sr-only" data-pagefind-filter="tag">{{ tag }}</span>
+  {% endfor %}
+  {{ post.html|safe }}
+</article>
+
+{% endblock %}

@@ -1,0 +1,10 @@
+<div class="research-list-grid">
+{% for post in posts %}
+  <article class="research-list-card">
+    <p class="research-date">{{ post.date|striptags }}</p>
+    <h2><a href="{{ url_for('research_post', name=post.path.replace('blog_posts/', '')) }}">{{ post.title|striptags }}</a></h2>
+    <p>{{ " ".join(post.html.split(' ')[:30])|safe|striptags }}...</p>
+    <a class="selected-work-link" href="{{ url_for('research_post', name=post.path.replace('blog_posts/', '')) }}">Read article <span aria-hidden="true">&rarr;</span></a>
+  </article>
+{% endfor %}
+</div>

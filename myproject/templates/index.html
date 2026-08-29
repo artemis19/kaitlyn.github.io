@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+
+{% block banner_header %}
+  {% include 'banner_header.html' %}
+{% endblock %}
+
+{% block content %}
+<main>
+  <section id="about" class="section-padding">
+    <div class="container">
+      <div class="about-layout">
+        <div class="about-portrait">
+          <img class="profile-image" src="{{ url_for('static', filename='img/profile.jpg') }}" alt="Portrait of Kaitlyn DeValk-Hammond">
+        </div>
+        <div>
+          <p class="section-kicker">About Me</p>
+          <h2 class="section-heading">Cybersecurity practitioner, educator, and researcher</h2>
+          {% include "aboutme.html" %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work" class="section-padding section-muted">
+    <div class="container">
+      <div class="section-intro">
+        <p class="section-kicker">Featured Proof of Work</p>
+        <h2 class="section-heading">Explore My Work</h2>
+      </div>
+      {% include "resources.html" %}
+    </div>
+  </section>
+
+  <section id="research" class="section-padding">
+    <div class="container">
+      <div class="section-intro">
+        <p class="section-kicker">Research</p>
+        <h2 class="section-heading">Latest Research &amp; Technical Writing</h2>
+      </div>
+      <div class="research-card-grid">
+        {% for post in posts %}
+        <article class="research-card">
+          <p class="research-date">{{ post.date|striptags }}</p>
+          <h3><a href="{{ url_for('research_post', name=post.path.replace('blog_posts/', '')) }}">{{ post.title|striptags }}</a></h3>
+          <p>{{ post.html|striptags|truncate(170) }}</p>
+          <a class="selected-work-link" href="{{ url_for('research_post', name=post.path.replace('blog_posts/', '')) }}">Read article <span aria-hidden="true">&rarr;</span></a>
+        </article>
+        {% endfor %}
+      </div>
+      <p class="section-action"><a class="button button-primary" href="{{ url_for('research') }}">Browse All Research</a></p>
+    </div>
+  </section>
+
+  <section id="talks" class="section-padding section-dark">
+    <div class="container">
+      <div class="section-intro">
+        <p class="section-kicker section-kicker-light">Research Communication</p>
+        <h2 class="section-heading">Talks, Publications &amp; Teaching</h2>
+        <p>I share applied cybersecurity research through peer-reviewed publications, conference presentations, and undergraduate teaching.</p>
+      </div>
+      <div class="contribution-grid">
+          <article class="contribution-card">
+            <p class="contribution-type">Publication</p>
+            <h3><em>Riverside</em>: A Design Study</h3>
+            <p>Peer-reviewed research on visualization for situation awareness in cybersecurity, published in <em>Information Visualization</em>.</p>
+            <a href="https://doi.org/10.1177/14738716231189220" target="_blank" rel="noopener">Read the publication <span aria-hidden="true">&rarr;</span></a>
+          </article>
+          <article class="contribution-card">
+            <p class="contribution-type">Conference Talks</p>
+            <h3>Usable Security Research</h3>
+            <p>Presented Riverside at ShmooCon and Wild West Hackin' Fest, and offensive-security tooling research at WSIW.</p>
+            <a href="https://www.youtube.com/watch?v=5NwQdIyn3uU" target="_blank" rel="noopener">Watch the ShmooCon talk <span aria-hidden="true">&rarr;</span></a>
+          </article>
+          <article class="contribution-card">
+            <p class="contribution-type">Teaching</p>
+            <h3>Cybersecurity in the Classroom</h3>
+            <p>Teach programming, computer security, networking, and cyber threats at the U.S. Coast Guard Academy.</p>
+            <a href="{{ url_for('static', filename='Kaitlyn_DeValk-Hammond_Resume.pdf') }}" target="_blank" rel="noopener">View teaching experience <span aria-hidden="true">&rarr;</span></a>
+          </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="credentials" class="section-padding">
+    <div class="container">
+      <div class="section-intro">
+        <p class="section-kicker">Professional Development</p>
+        <h2 class="section-heading">Certifications &amp; Core Capabilities</h2>
+      </div>
+      <div class="credentials-layout">
+        <div>
+          <div class="credentials-panel">
+            <h3>Certifications</h3>
+            <ul class="credential-list">
+              <li><strong>GCTI</strong><span>GIAC Cyber Threat Intelligence · 2024</span></li>
+              <li><strong>OSCP</strong><span>Offensive Security Certified Professional · 2024</span></li>
+              <li><strong>GPEN</strong><span>GIAC Penetration Tester · 2021</span></li>
+              <li><strong>GCIH</strong><span>GIAC Certified Incident Handler · 2020</span></li>
+              <li><strong>CISSP</strong><span>Certified Information Systems Security Professional · 2020</span></li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="capabilities-panel">
+            <h3>Core Capabilities</h3>
+            <div class="capability-group">
+              <h4>Threat Intelligence &amp; Defense</h4>
+              <p>Cyber threat intelligence, threat hunting, incident response, digital forensics, and Security Operations Center operations.</p>
+            </div>
+            <div class="capability-group">
+              <h4>Security Assessment</h4>
+              <p>Vulnerability assessment, penetration testing, Red Team operations, risk assessment, and technical reporting.</p>
+            </div>
+            <div class="capability-group">
+              <h4>Research &amp; Engineering</h4>
+              <p>Human-centered research, cybersecurity visualization, Python, Golang, JavaScript, and technical communication.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section-padding">
+    <div class="container">
+      {% include "contactme.html" %}
+    </div>
+  </section>
+</main>
+{% endblock %}
+
+{% block blog_section %}{% endblock %}
+{% block contact_section %}{% endblock %}

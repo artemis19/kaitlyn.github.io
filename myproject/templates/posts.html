@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block html_head %}
+  {% if config.PAGEFIND_ENABLED %}
+  <link rel="stylesheet" href="../pagefind/pagefind-component-ui.css">
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}
+
+{% block scripts %}
+  {% if config.PAGEFIND_ENABLED %}
+  <script src="../pagefind/pagefind-component-ui.js" type="module"></script>
+  {% endif %}
+{% endblock %}
