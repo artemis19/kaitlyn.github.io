@@ -2,7 +2,6 @@
 name = "kaitlyn-korner"
 version = "0.1.0"
 description = "Kaitlyn DeValk-Hammond's portfolio and cybersecurity research site"
-readme = "README.md"
 requires-python = ">=3.12,<3.13"
 dependencies = [
     "flask>=3.1,<4",
