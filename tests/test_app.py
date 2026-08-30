@@ -70,7 +70,9 @@ def test_static_site_builds(tmp_path: Path) -> None:
     assert 'id="work"' in homepage_html
     assert "#mainheader" not in homepage_html
     assert "#highlights" not in homepage_html
-    assert "Download Résumé" in homepage_html
+    assert "Download Resume" in homepage_html
+    assert "<title>Kaitlyn's Korner</title>" in homepage_html
+    assert "Latest Research &amp; Deep Dives" in homepage_html
     assert "Average CrossFitter and Amateur Baker" in homepage_html
     assert "jquery" not in homepage_html.lower()
     assert "bootstrap" not in homepage_html.lower()
